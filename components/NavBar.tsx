@@ -3,12 +3,20 @@ import { styled } from '../stitches.config';
 import Link from 'next/link';
 import { FaTimes } from 'react-icons/fa';
 // import logo from '../public/vercel.svg';
+import {
+  HiLightningBolt,
+  HiViewBoards,
+  HiChartBar,
+  HiCalendar,
+} from 'react-icons/hi';
 
 const SideNav = styled('div', {
   gridArea: 'sidenav',
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  margin: '1.5em 1.5em 0 1.5em',
+  height: '95%',
+  borderRadius: '24px',
   width: '240px',
   position: 'fixed',
   overflowY: 'auto',
@@ -38,13 +46,12 @@ const SideNavClose = styled('div', {
   },
 });
 
-const HeaderContainer = styled('div', {
-  marginTop: '1em',
-  paddingLeft: '1.25em',
+const LogoContainer = styled('div', {
+  padding: '2em 2.25em',
 });
 
-const Header = styled('img', {
-  width: '10em',
+const Logo = styled('img', {
+  width: '9em',
 });
 
 const LinkContainer = styled('ul', {
@@ -54,15 +61,22 @@ const LinkContainer = styled('ul', {
   fontWeight: '500',
   listStyle: 'none',
   margin: '0',
-  padding: '0',
+  paddingLeft: '1.25em',
   width: '100%',
 });
 
 const LinkWrapper = styled('li', {
-  padding: '0.5em 0em 1em 2.5em',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '1em',
+  padding: '1em 0em 1em 1.25em',
+  borderTopLeftRadius: '14px',
+  borderBottomLeftRadius: '14px',
   '&:hover': {
     color: '#4f9da6',
     backgroundColor: '#f7f7ff',
+    borderRight: '2px solid #4f9da6',
+    cursor: 'pointer',
   },
 });
 
@@ -81,23 +95,32 @@ const NavBar: FunctionComponent<Props> = () => {
         <SideNavClose>
           <FaTimes />
         </SideNavClose>
-        <HeaderContainer>
-          <Header src="vercel.svg" alt="logo" />
-        </HeaderContainer>
+        <LogoContainer>
+          <Logo src="CL-Final-Logo-Light.svg" alt="logo" />
+        </LogoContainer>
         <div>
           <LinkContainer>
-            <LinkWrapper>
-              <NavLink href="/analytics">Analytics</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
-              <NavLink href="/ideas">Ideas</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
-              <NavLink href="/storyboard">Storyboard</NavLink>
-            </LinkWrapper>
-            <LinkWrapper>
-              <NavLink href="/calendar">Calendar</NavLink>
-            </LinkWrapper>
+            <NavLink href="/analytics">
+              <LinkWrapper>
+                <HiChartBar /> Analytics
+              </LinkWrapper>
+            </NavLink>
+            <NavLink href="/ideas">
+              <LinkWrapper>
+                <HiLightningBolt /> Ideas
+              </LinkWrapper>
+            </NavLink>
+            <NavLink href="/storyboard">
+              <LinkWrapper>
+                <HiViewBoards /> Storyboard
+              </LinkWrapper>
+            </NavLink>
+            <NavLink href="/calendar">
+              <LinkWrapper>
+                <HiCalendar />
+                Calendar
+              </LinkWrapper>
+            </NavLink>
           </LinkContainer>
         </div>
       </SideNav>

@@ -2,16 +2,14 @@ import { FunctionComponent, useState } from 'react';
 import {
   ProfileContainer,
   ProfilePic,
-  ProfileRole,
   ProfileName,
   DropdownButton,
   Dropdown,
   DropdownContent,
   DropLink,
-  SettingsIcon,
-  BillingIcon,
-  LogoutIcon,
+  MainProfileArea,
 } from './uikit/navProfile';
+import { HiCog, HiCurrencyDollar, HiLogout } from 'react-icons/hi';
 
 interface Props {}
 
@@ -23,24 +21,25 @@ const ProfileDropdown: FunctionComponent<Props> = () => {
   }
   return (
     <>
-      <ProfileContainer onClick={toggleDropdown}>
-        <ProfilePic src="avatar-1.jpg" alt="profile picture" />
-        <ProfileName>Brett D.</ProfileName>
-        <ProfileRole>Owner</ProfileRole>
-        <DropdownButton />
+      <ProfileContainer>
+        <MainProfileArea onClick={toggleDropdown}>
+          <ProfilePic src="photo.png" alt="profile picture" />
+          <ProfileName>Brett D.</ProfileName>
+          <DropdownButton />
+        </MainProfileArea>
         {isOpen && (
           <Dropdown>
             <DropdownContent>
               <DropLink>
-                <SettingsIcon />
+                <HiCog />
                 Settings
               </DropLink>
               <DropLink>
-                <BillingIcon />
+                <HiCurrencyDollar />
                 Billing
               </DropLink>
               <DropLink>
-                <LogoutIcon />
+                <HiLogout />
                 Logout
               </DropLink>
             </DropdownContent>

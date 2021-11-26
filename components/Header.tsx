@@ -1,17 +1,4 @@
 import { FunctionComponent } from 'react';
-// import {
-//   ProfileContainer,
-//   ProfilePic,
-//   ProfileRole,
-//   ProfileName,
-//   DropdownButton,
-//   Dropdown,
-//   DropdownContent,
-//   DropLink,
-//   SettingsIcon,
-//   BillingIcon,
-//   LogoutIcon,
-// } from './uikit/navProfile';
 import { styled } from '../stitches.config';
 import ProfileDropdown from './ProfileDropdown';
 
@@ -19,11 +6,12 @@ const HeaderArea = styled('div', {
   gridArea: 'header',
   display: 'flex',
   justifyContent: 'space-between',
-  margin: '1.5em 2em 0em 2em',
+  margin: '1.5em 0',
+  padding: '0 3em',
 });
 
 export const Search = styled('input', {
-  padding: '$md $lg',
+  padding: '1.5em $lg',
   borderRadius: '14px',
   border: '1px solid #fff',
   boxSizing: 'border-box',
@@ -45,41 +33,11 @@ export const Search = styled('input', {
 interface Props {}
 
 const Header: FunctionComponent<Props> = () => {
-  // const [isOpen, setIsOpen] = useState(false);
-
-  // function toggleDropdown() {
-  //   return setIsOpen(!isOpen);
-  // }
-
   return (
     <>
       <HeaderArea>
         <Search placeholder="Search" />
         <ProfileDropdown />
-        {/* <ProfileContainer onClick={toggleDropdown}>
-          <ProfilePic src="avatar-1.jpg" alt="profile picture" />
-          <ProfileName>Brett D.</ProfileName>
-          <ProfileRole>Owner</ProfileRole>
-          <DropdownButton />
-          {isOpen && (
-            <Dropdown>
-              <DropdownContent>
-                <DropLink>
-                  <SettingsIcon />
-                  Settings
-                </DropLink>
-                <DropLink>
-                  <BillingIcon />
-                  Billing
-                </DropLink>
-                <DropLink>
-                  <LogoutIcon />
-                  Logout
-                </DropLink>
-              </DropdownContent>
-            </Dropdown>
-          )}
-        </ProfileContainer> */}
       </HeaderArea>
     </>
   );
