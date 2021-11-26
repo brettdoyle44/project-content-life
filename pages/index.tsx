@@ -1,15 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import {
-  Button,
-  Text,
-  Input,
-  DropDown,
-  DropDownWrapper,
-} from '../components/uikit/uikit';
 import styles from '../styles/Home.module.css';
-import Layout from '../components/Layout';
 
 const Home: NextPage = () => {
   return (

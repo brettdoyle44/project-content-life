@@ -95,13 +95,3 @@ export const Input = styled('input', {
     },
   },
 });
-
-export const DropDownWrapper = styled('div', {
-  width: '200px',
-});
-
-export const DropDown = styled('select', {
-  padding: '$sm $md',
-  borderRadius: '14px',
-  border: '1px solid $lightGray',
-});
