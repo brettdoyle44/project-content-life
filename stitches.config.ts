@@ -14,11 +14,13 @@ export const { styled, getCssText } = createStitches({
       white: '#ffffff',
       black: '#000000',
       lightGray: '#D8E0F0',
+      mainGray: '#7D8592',
     },
     fontSizes: {
       xs: '0.8rem',
       sm: '0.9rem',
       md: '1rem',
+      mdlg: '1.25em',
       lg: '1.5rem',
       xl: '2rem',
     },

@@ -6,7 +6,7 @@ import { FaTimes } from 'react-icons/fa';
 import {
   HiLightningBolt,
   HiViewBoards,
-  HiChartBar,
+  HiHome,
   HiCalendar,
 } from 'react-icons/hi';
 
@@ -100,9 +100,9 @@ const NavBar: FunctionComponent<Props> = () => {
         </LogoContainer>
         <div>
           <LinkContainer>
-            <NavLink href="/analytics">
+            <NavLink href="/home">
               <LinkWrapper>
-                <HiChartBar /> Analytics
+                <HiHome /> Home
               </LinkWrapper>
             </NavLink>
             <NavLink href="/ideas">

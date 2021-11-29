@@ -8,6 +8,7 @@ const HeaderArea = styled('div', {
   justifyContent: 'space-between',
   margin: '1.5em 0',
   padding: '0 3em',
+  background: '#F4F9FD',
 });
 
 export const Search = styled('input', {
@@ -15,6 +16,7 @@ export const Search = styled('input', {
   borderRadius: '14px',
   border: '1px solid #fff',
   boxSizing: 'border-box',
+  height: '3.5em',
   boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   outline: 'none',
   '&:focus': {

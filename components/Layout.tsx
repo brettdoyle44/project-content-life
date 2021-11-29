@@ -9,19 +9,19 @@ const CoreLayout = styled('div', {
   gridTemplateRows: '50px 1fr 50px',
   gridTemplateAreas: `'header' 
   'main'`,
-  height: '100vh',
+  // height: '100vh',
   backgroundColor: '#F4F9FD',
   '@bp1': {
-    gridTemplateColumns: '240px 1fr',
-    gridTemplateAreas: `'sidenav header' 
-    'sidenav main'`,
+    grid: `[row1-start]'sidenav header' 100px [row1-end]
+          [row1-start]'sidenav main' auto [row1-end] / 
+          240px 1fr
+    `,
   },
 });
 
 const MainArea = styled('div', {
   gridArea: 'main',
-  display: 'flex',
-  padding: '1.5em 2em',
+  padding: '0.5em 2em',
 });
 
 interface Props {

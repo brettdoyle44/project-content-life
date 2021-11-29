@@ -1,4 +1,5 @@
 import { styled } from '../../stitches.config';
+import Link from 'next/link';
 
 export const Button = styled('button', {
   color: '#fff',
@@ -94,4 +95,22 @@ export const Input = styled('input', {
       },
     },
   },
+});
+
+export const Card = styled('div', {
+  backgroundColor: '#fff',
+  borderRadius: '0.5em',
+  boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
+  display: 'flex',
+  flexFlow: 'row wrap',
+});
+
+export const SubSectionTitle = styled('div', {
+  fontSize: '$lg',
+  alignSelf: 'start',
+});
+
+export const ViewAllLink = styled(Link, {
+  fontSize: '$sm',
+  alignSelf: 'end',
 });
