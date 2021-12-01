@@ -17,9 +17,10 @@ export const { styled, getCssText } = createStitches({
       mainGray: '#7D8592',
     },
     fontSizes: {
-      xs: '0.8rem',
+      xs: '0.875rem',
       sm: '0.9rem',
       md: '1rem',
+      mdsm: '1.125em',
       mdlg: '1.25em',
       lg: '1.5rem',
       xl: '2rem',

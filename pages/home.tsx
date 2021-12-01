@@ -2,6 +2,8 @@ import { FunctionComponent } from 'react';
 import { styled } from '../stitches.config';
 import Link from 'next/link';
 import Image from 'next/image';
+import { HiCalendar, HiArrowNarrowUp } from 'react-icons/hi';
+import { cursorTo } from 'readline';
 // import { SubSectionTitle, Card, ViewAllLink } from '../components/uikit/uikit';
 
 const HomeLayout = styled('div', {
@@ -43,6 +45,7 @@ export const Idea = styled('div', {
   backgroundColor: '#fff',
   borderRadius: '0.5em',
   padding: '1.5em',
+  border: '1px solid #fff',
   boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `[row1-start]'ideaimage ideanum ideanum divider ideadata ideadata ideadata' 1.5em [row1-end]
     [row2-start]'ideaimage ideaname ideaname divider ideastats ideastats ideastats' auto [row2-end]
@@ -50,6 +53,10 @@ export const Idea = styled('div', {
     / 4em 1fr 1fr 1em 1fr 1fr 1fr
     
     `,
+  '&:hover': {
+    border: '1px solid $primary',
+    cursor: 'pointer',
+  },
 });
 
 export const TaskCard = styled('div', {
@@ -107,6 +114,8 @@ export const IdeaImage = styled('div', {
 });
 export const IdeaNumber = styled('div', {
   gridArea: 'ideanum',
+  color: '#91929E',
+  fontSize: '$xs',
 });
 export const Divider = styled('div', {
   gridArea: 'divider',
@@ -116,24 +125,75 @@ export const Divider = styled('div', {
 });
 export const IdeaData = styled('div', {
   gridArea: 'ideadata',
+  fontWeight: '700',
+  paddingLeft: '2em',
+  paddingTop: '0.75em',
+  fontSize: '$md',
 });
 export const IdeaName = styled('div', {
   gridArea: 'ideaname',
+  fontWeight: '700',
+  fontSize: '$mdsm',
 });
+
 export const Created = styled('div', {
+  display: 'flex',
   gridArea: 'created',
+  alignItems: 'center',
+  color: '$mainGray',
 });
+
+export const CalendarIcon = styled(HiCalendar, {
+  fontSize: '$lg',
+});
+
+export const IdeaDate = styled('div', {
+  color: '$mainGray',
+  paddingLeft: '$xs',
+  fontSize: '$xs',
+  marginTop: '3px',
+});
+
+export const UpArrowIcon = styled(HiArrowNarrowUp, {
+  fontSize: '$lg',
+});
+
+export const PriorityLevel = styled('div', {
+  paddingLeft: '$xs',
+  fontSize: '$xs',
+  marginTop: '3px',
+  fontWeight: '700',
+});
+
 export const Priority = styled('div', {
+  display: 'flex',
   gridArea: 'priority',
+  alignItems: 'center',
+  justifySelf: 'center',
+  color: '$warning',
 });
 
 export const IdeaStats = styled('div', {
+  display: 'grid',
   gridArea: 'ideastats',
+  gridGap: '10px',
+  paddingLeft: '2em',
+  paddingTop: '1.25em',
+  grid: '1fr / 1fr 1fr 1fr',
 });
 
-// export const CardLayout = styled('div', {
-//     display: grid
-// })
+export const StatsHeader = styled('div', {
+  fontSize: '$xs',
+  color: '#91929E',
+  paddingBottom: '5px',
+});
+
+export const Stats = styled('div', {
+  fontWeight: '700',
+});
+
+export const Avatars = styled('div', {});
+
 export const Title = styled('div', {
   gridArea: 'header',
   justifySelf: 'start',
@@ -242,13 +302,50 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
               alt="something"
             />
           </IdeaImage>
-          <IdeaNumber>ID000001</IdeaNumber>
+          <IdeaNumber>PN0001265</IdeaNumber>
           <Divider></Divider>
           <IdeaData>Idea Data</IdeaData>
-          <IdeaName>Some Idea</IdeaName>
-          <Created>Nov 27, 2021</Created>
-          <Priority>Medium</Priority>
-          <IdeaStats>1235</IdeaStats>
+          <IdeaName>Medical App (iOS native)</IdeaName>
+          <Created>
+            <CalendarIcon /> <IdeaDate>Created Nov 27, 2021</IdeaDate>
+          </Created>
+          <Priority>
+            <UpArrowIcon /> <PriorityLevel>Medium</PriorityLevel>
+          </Priority>
+          <IdeaStats>
+            <div>
+              <StatsHeader>All tasks</StatsHeader>
+              <Stats>34</Stats>
+            </div>
+            <div>
+              <StatsHeader>Active tasks</StatsHeader>
+              <Stats>13</Stats>
+            </div>
+            <div>
+              <StatsHeader>Stakeholders</StatsHeader>
+              <Avatars>
+                {' '}
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+              </Avatars>
+            </div>
+          </IdeaStats>
         </Idea>
 
         <Idea style={{ gridArea: 'idea2' }}>
@@ -260,13 +357,50 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
               alt="something"
             />
           </IdeaImage>
-          <IdeaNumber>ID000001</IdeaNumber>
+          <IdeaNumber>PN0001265</IdeaNumber>
           <Divider></Divider>
           <IdeaData>Idea Data</IdeaData>
-          <IdeaName>Some Idea</IdeaName>
-          <Created>Nov 27, 2021</Created>
-          <Priority>Medium</Priority>
-          <IdeaStats>1235</IdeaStats>
+          <IdeaName>Medical App (iOS native)</IdeaName>
+          <Created>
+            <CalendarIcon /> <IdeaDate>Created Nov 27, 2021</IdeaDate>
+          </Created>
+          <Priority>
+            <UpArrowIcon /> <PriorityLevel>Medium</PriorityLevel>
+          </Priority>
+          <IdeaStats>
+            <div>
+              <StatsHeader>All tasks</StatsHeader>
+              <Stats>34</Stats>
+            </div>
+            <div>
+              <StatsHeader>Active tasks</StatsHeader>
+              <Stats>13</Stats>
+            </div>
+            <div>
+              <StatsHeader>Stakeholders</StatsHeader>
+              <Avatars>
+                {' '}
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+              </Avatars>
+            </div>
+          </IdeaStats>
         </Idea>
 
         <Idea style={{ gridArea: 'idea3' }}>
@@ -278,13 +412,50 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
               alt="something"
             />
           </IdeaImage>
-          <IdeaNumber>ID000001</IdeaNumber>
+          <IdeaNumber>PN0001265</IdeaNumber>
           <Divider></Divider>
           <IdeaData>Idea Data</IdeaData>
-          <IdeaName>Some Idea</IdeaName>
-          <Created>Nov 27, 2021</Created>
-          <Priority>Medium</Priority>
-          <IdeaStats>1235</IdeaStats>
+          <IdeaName>Medical App (iOS native)</IdeaName>
+          <Created>
+            <CalendarIcon /> <IdeaDate>Created Nov 27, 2021</IdeaDate>
+          </Created>
+          <Priority>
+            <UpArrowIcon /> <PriorityLevel>Medium</PriorityLevel>
+          </Priority>
+          <IdeaStats>
+            <div>
+              <StatsHeader>All tasks</StatsHeader>
+              <Stats>34</Stats>
+            </div>
+            <div>
+              <StatsHeader>Active tasks</StatsHeader>
+              <Stats>13</Stats>
+            </div>
+            <div>
+              <StatsHeader>Stakeholders</StatsHeader>
+              <Avatars>
+                {' '}
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+              </Avatars>
+            </div>
+          </IdeaStats>
         </Idea>
 
         <Idea style={{ gridArea: 'idea4' }}>
@@ -296,18 +467,55 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
               alt="something"
             />
           </IdeaImage>
-          <IdeaNumber>ID000001</IdeaNumber>
+          <IdeaNumber>PN0001265</IdeaNumber>
           <Divider></Divider>
           <IdeaData>Idea Data</IdeaData>
-          <IdeaName>Some Idea</IdeaName>
-          <Created>Nov 27, 2021</Created>
-          <Priority>Medium</Priority>
-          <IdeaStats>1235</IdeaStats>
+          <IdeaName>Medical App (iOS native)</IdeaName>
+          <Created>
+            <CalendarIcon /> <IdeaDate>Created Nov 27, 2021</IdeaDate>
+          </Created>
+          <Priority>
+            <UpArrowIcon /> <PriorityLevel>Medium</PriorityLevel>
+          </Priority>
+          <IdeaStats>
+            <div>
+              <StatsHeader>All tasks</StatsHeader>
+              <Stats>34</Stats>
+            </div>
+            <div>
+              <StatsHeader>Active tasks</StatsHeader>
+              <Stats>13</Stats>
+            </div>
+            <div>
+              <StatsHeader>Stakeholders</StatsHeader>
+              <Avatars>
+                {' '}
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+                <Image
+                  src="/photo.png"
+                  width="28"
+                  height="28"
+                  alt="something"
+                />
+              </Avatars>
+            </div>
+          </IdeaStats>
         </Idea>
       </IdeaCard>
 
       <StoryboardCard>
-        <SubSectionTitle>Recent Storyboards</SubSectionTitle>
+        <SubSectionTitle>Storyboards</SubSectionTitle>
 
         <ViewAllLink>
           <Link href="/">View All &gt;</Link>
