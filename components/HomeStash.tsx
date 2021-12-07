@@ -2,15 +2,9 @@ import { FunctionComponent } from 'react';
 import { styled } from '../stitches.config';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  HiCalendar,
-  HiArrowNarrowUp,
-  HiClock,
-  HiViewBoards,
-} from 'react-icons/hi';
+import { HiCalendar, HiArrowNarrowUp, HiClock } from 'react-icons/hi';
+import { cursorTo } from 'readline';
 // import { SubSectionTitle, Card, ViewAllLink } from '../components/uikit/uikit';
-
-const someimage = 'react-home-screen.png';
 
 const HomeLayout = styled('div', {
   display: 'grid',
@@ -33,9 +27,8 @@ const HomeLayout = styled('div', {
 export const IdeaCard = styled('div', {
   gridArea: 'idea',
   display: 'grid',
-  paddingTop: '1.5em',
+  padding: '1.5em 0',
   gridGap: '10px',
-  boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `
     [row1-start]'header viewall' 1.5em [row1-end]
             [row2-start]'idea1 idea1' 145px [row2-end]
@@ -68,11 +61,8 @@ export const Idea = styled('div', {
 export const TaskCard = styled('div', {
   gridArea: 'tasks',
   display: 'grid',
-  backgroundColor: '#fff',
-  borderRadius: '0.5em',
-  padding: '1.5em',
+  padding: '1.5em 0',
   gridGap: '10px',
-  boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `
   [row1-start]'header header viewall' 1.5em [row1-end]
           [row2-start]'task1 task2 task3' 200px [row2-end]
@@ -84,11 +74,10 @@ export const TaskCard = styled('div', {
 export const CalendarCard = styled('div', {
   gridArea: 'calendar',
   display: 'grid',
-  backgroundColor: '#fff',
+  background: '#fff',
   borderRadius: '0.5em',
   padding: '1.5em',
-  gridColumnGap: '1em',
-  gridRowGap: '1.75em',
+  gridGap: '10px',
   boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `
   [row1-start]'header viewall' 1.5em [row1-end]
@@ -105,64 +94,15 @@ export const StoryboardCard = styled('div', {
   backgroundColor: '#fff',
   borderRadius: '0.5em',
   padding: '1.5em',
-  gridColumnGap: '1em',
-  gridRowGap: '1.5em',
+  gridGap: '10px',
   boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `
   [row1-start]'header viewall' 1.5em [row1-end]
-          [row2-start]'story1 story1' 125px [row2-end]
-          [row3-start]'story2 story2' 125px [row3-end]
-          [row4-start]'story3 story3' 125px [row4-end]
-          [row5-start]'story4 story4' 125px [row5-end]
+          [row2-start]'story1 story1' 100px [row2-end]
+          [row3-start]'story2 story2' 100px [row3-end]
+          [row3-start]'story3 story3' 100px [row3-end]
           / 2fr 1fr
     `,
-});
-
-export const Storyboard = styled('div', {
-  display: 'grid',
-  borderLeft: '4px solid $secondary',
-  padding: '0.25em 1em',
-  grid: `[row1-start]'storyname storyname' 1.5em [row1-end]
-          [row2-start]'storydetail storydetail' 1fr [row2-end]
-          [row3-start]'boardnumber currentversion' 1.5em [row3-end]
-          / 2fr 1fr
-    `,
-});
-
-export const StoryName = styled('div', {
-  gridArea: 'storyname',
-  fontWeight: '700',
-});
-
-export const StoryDetail = styled('div', {
-  gridArea: 'storydetail',
-  color: '#91929E',
-  fontSize: '$sm',
-});
-
-export const BoardNumber = styled('div', {
-  gridArea: 'boardnumber',
-  fontSize: '$xs',
-  width: '50px',
-  padding: '$xs',
-  color: '$secondary',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-export const CurrentVersion = styled('div', {
-  gridArea: 'currentversion',
-  fontSize: '$xs',
-  justifySelf: 'end',
-  width: '50px',
-  padding: '$xs',
-  color: '#fff',
-  background: '$secondary',
-  borderRadius: '5px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
 });
 
 export const IdeaImage = styled('div', {
@@ -260,23 +200,19 @@ export const Title = styled('div', {
 
 export const Task = styled('div', {
   display: 'grid',
-  border: '1px solid #ddd',
+  background: '#fff',
   height: '100%',
   width: '100%',
   borderRadius: '10px',
-  padding: '1em',
+  padding: '1em 1.65em',
   boxShadow: '0px 6px 58px rgba(196, 203, 214, 0.103611)',
   grid: `
-  [row1-start]'channel' 2em [row1-end]
-  [row2-start]'ideaname' 2em [row2-end]
-  [row3-start]'taskname' 1fr [row3-end]
-  [row4-start]'duedate' 2em [row4-end]
+          [row1-start]'channel' 2em [row1-end]
+          [row2-start]'ideaname' 2em [row2-end]
+          [row3-start]'taskname' 1fr [row3-end]
+          [row4-start]'duedate' 2em [row4-end]
           / 1fr
     `,
-  '&:hover': {
-    border: '1px solid $primary',
-    cursor: 'pointer',
-  },
 });
 
 export const TaskIdeaName = styled('div', {
@@ -290,10 +226,11 @@ export const TaskName = styled('div', {
 });
 
 export const DueDate = styled('div', {
-  maxWidth: '95px',
+  maxWidth: '100px',
   fontSize: '$xs',
+  height: '1.85em',
   background: '$danger',
-  borderRadius: '10px',
+  borderRadius: '50px',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
@@ -306,67 +243,9 @@ export const Channel = styled('div', {
 });
 
 export const CalendarEvent = styled('div', {
-  display: 'grid',
-  borderLeft: '4px solid $warning',
+  background: '$lightGray',
   height: '100%',
   width: '100%',
-  padding: '0.25em 1em',
-  grid: `
-  [row1-start]'eventtype eventchannel' 1.5em [row1-end]
-  [row2-start]'eventname eventname' 1fr [row2-end]
-  [row3-start]'startdate eventlength' 1.5em [row3-end]
-          / 2fr 1fr
-    `,
-  '&:hover': {
-    opacity: '0.75',
-    cursor: 'pointer',
-  },
-});
-
-export const EventType = styled('div', {
-  gridArea: 'eventtype',
-  fontSize: '$xs',
-  color: '$warning',
-});
-
-export const EventChannel = styled('div', {
-  gridArea: 'eventchannel',
-  fontSize: '$xs',
-  justifySelf: 'end',
-  width: '50px',
-  padding: '$xs',
-  color: '#cc8e00',
-  background: '$warning',
-  borderRadius: '5px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-});
-
-export const EventName = styled('div', {
-  gridArea: 'eventname',
-  fontWeight: '700',
-  alignSelf: 'center',
-});
-
-export const EventStartDate = styled('div', {
-  gridArea: 'startdate',
-  fontSize: '$xs',
-  color: '#91929E',
-});
-
-export const EventLength = styled('div', {
-  gridArea: 'eventlength',
-  fontSize: '$xs',
-  justifySelf: 'end',
-  width: '50px',
-  padding: '$xs',
-  color: '$mainGray',
-  background: '#F4F9FD',
-  borderRadius: '5px',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
 });
 
 export const Story = styled('div', {
@@ -387,12 +266,12 @@ export const ViewAllLink = styled('div', {
   gridArea: 'viewall',
   justifySelf: 'end',
   color: '$primary',
-  fontSize: '$sm',
+  fontSize: '$md',
   alignSelf: 'center',
 });
 export const SubSectionTitleTwo = styled('div', {
   gridArea: 'header',
-  paddingLeft: '1.5em',
+  paddingLeft: '1.25em',
   justifySelf: 'start',
   fontSize: '$mdlg',
   alignSelf: 'center',
@@ -402,9 +281,9 @@ export const SubSectionTitleTwo = styled('div', {
 export const ViewAllLinkTwo = styled('div', {
   gridArea: 'viewall',
   justifySelf: 'end',
-  paddingRight: '1.5em',
+  paddingRight: '1.25em',
   color: '$primary',
-  fontSize: '$sm',
+  fontSize: '$md',
   alignSelf: 'center',
 });
 
@@ -416,11 +295,11 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
       <Title>Dashboard</Title>
 
       <TaskCard>
-        <SubSectionTitle>Tasks</SubSectionTitle>
+        <SubSectionTitleTwo>Tasks</SubSectionTitleTwo>
 
-        <ViewAllLink>
+        <ViewAllLinkTwo>
           <Link href="/">View All &gt;</Link>
-        </ViewAllLink>
+        </ViewAllLinkTwo>
         <Task style={{ gridArea: 'task1' }}>
           <Channel>Youtube</Channel>
           <TaskIdeaName>Medical App (iOS native)</TaskIdeaName>
@@ -477,36 +356,9 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
         <ViewAllLink>
           <Link href="/">View All &gt;</Link>
         </ViewAllLink>
-        <CalendarEvent style={{ gridArea: 'event1' }}>
-          <EventType>Ad Hoc</EventType>
-          <EventChannel>Email</EventChannel>
-          <EventName>Customer Appreciation Email</EventName>
-          <EventStartDate>Aug 20th | 4pm EST</EventStartDate>
-          <EventLength>
-            <HiClock style={{ marginRight: '3px' }} />
-            1h
-          </EventLength>
-        </CalendarEvent>
-        <CalendarEvent style={{ gridArea: 'event2' }}>
-          <EventType>Ad Hoc</EventType>
-          <EventChannel>Email</EventChannel>
-          <EventName>Customer Appreciation Email</EventName>
-          <EventStartDate>Aug 20th | 4pm EST</EventStartDate>
-          <EventLength>
-            <HiClock style={{ marginRight: '3px' }} />
-            1h
-          </EventLength>
-        </CalendarEvent>
-        <CalendarEvent style={{ gridArea: 'event3' }}>
-          <EventType>Ad Hoc</EventType>
-          <EventChannel>Email</EventChannel>
-          <EventName>Customer Appreciation Email</EventName>
-          <EventStartDate>Aug 20th | 4pm EST</EventStartDate>
-          <EventLength>
-            <HiClock style={{ marginRight: '3px' }} />
-            1h
-          </EventLength>
-        </CalendarEvent>
+        <CalendarEvent style={{ gridArea: 'event1' }}></CalendarEvent>
+        <CalendarEvent style={{ gridArea: 'event2' }}></CalendarEvent>
+        <CalendarEvent style={{ gridArea: 'event3' }}></CalendarEvent>
       </CalendarCard>
 
       <IdeaCard>
@@ -742,50 +594,9 @@ const HomePage: FunctionComponent<HomePageProps> = () => {
         <ViewAllLink>
           <Link href="/">View All &gt;</Link>
         </ViewAllLink>
-        <Storyboard style={{ gridArea: 'story1' }}>
-          <StoryName>Best Storyboard</StoryName>
-          <StoryDetail>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-            natus praesentium eligendi...
-          </StoryDetail>
-          <BoardNumber>
-            <HiViewBoards style={{ marginRight: '3px' }} /> 23
-          </BoardNumber>
-          <CurrentVersion>v3</CurrentVersion>
-        </Storyboard>
-        <Storyboard style={{ gridArea: 'story2' }}>
-          <StoryName>Best Storyboard</StoryName>
-          <StoryDetail>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-            natus praesentium eligendi...
-          </StoryDetail>
-          <BoardNumber>
-            <HiViewBoards style={{ marginRight: '3px' }} /> 23
-          </BoardNumber>
-          <CurrentVersion>v3</CurrentVersion>
-        </Storyboard>
-        <Storyboard style={{ gridArea: 'story3' }}>
-          <StoryName>Best Storyboard</StoryName>
-          <StoryDetail>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-            natus praesentium eligendi...
-          </StoryDetail>
-          <BoardNumber>
-            <HiViewBoards style={{ marginRight: '3px' }} /> 23
-          </BoardNumber>
-          <CurrentVersion>v3</CurrentVersion>
-        </Storyboard>
-        <Storyboard style={{ gridArea: 'story4' }}>
-          <StoryName>Best Storyboard</StoryName>
-          <StoryDetail>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis
-            natus praesentium eligendi...
-          </StoryDetail>
-          <BoardNumber>
-            <HiViewBoards style={{ marginRight: '3px' }} /> 23
-          </BoardNumber>
-          <CurrentVersion>v3</CurrentVersion>
-        </Storyboard>
+        <CalendarEvent style={{ gridArea: 'story1' }}></CalendarEvent>
+        <CalendarEvent style={{ gridArea: 'story2' }}></CalendarEvent>
+        <CalendarEvent style={{ gridArea: 'story3' }}></CalendarEvent>
       </StoryboardCard>
     </HomeLayout>
   );
