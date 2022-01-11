@@ -8,7 +8,6 @@ const HeaderArea = styled('div', {
   justifyContent: 'space-between',
   margin: '1.5em 0',
   padding: '0 3em',
-  background: '#F4F9FD',
 });
 
 export const Search = styled('input', {

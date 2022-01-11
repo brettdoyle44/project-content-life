@@ -9,11 +9,9 @@ const CoreLayout = styled('div', {
   gridTemplateRows: '50px 1fr 50px',
   gridTemplateAreas: `'header' 
   'main'`,
-  // height: '100vh',
-  backgroundColor: '#F4F9FD',
   '@bp1': {
     grid: `[row1-start]'sidenav header' 100px [row1-end]
-          [row1-start]'sidenav main' auto [row1-end] / 
+          [row1-start]'sidenav main' 100% [row1-end] / 
           240px 1fr
     `,
   },

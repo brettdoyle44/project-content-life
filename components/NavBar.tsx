@@ -105,14 +105,9 @@ const NavBar: FunctionComponent<Props> = () => {
                 <HiHome /> Home
               </LinkWrapper>
             </NavLink>
-            <NavLink href="/ideas">
+            <NavLink href="/campaigns">
               <LinkWrapper>
-                <HiLightningBolt /> Ideas
-              </LinkWrapper>
-            </NavLink>
-            <NavLink href="/storyboard">
-              <LinkWrapper>
-                <HiViewBoards /> Storyboard
+                <HiLightningBolt /> Campaigns
               </LinkWrapper>
             </NavLink>
             <NavLink href="/calendar">
